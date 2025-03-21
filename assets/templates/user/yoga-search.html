@@ -1,0 +1,473 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zxx" class="no-js">
+
+<head>
+	<!-- Mobile Specific Meta -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Favicon-->
+	<link rel="shortcut icon" href="{% static 'user/img/icon-img.png' %}">
+	<!-- Author Meta -->
+	<meta name="author" content="colorlib">
+	<!-- Meta Description -->
+	<meta name="description" content="">
+	<!-- Meta Keyword -->
+	<meta name="keywords" content="">
+	<!-- meta character set -->
+	<meta charset="UTF-8">
+	<!-- Site Title -->
+	<title>Detection</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+	<link href="https://fonts.googleapis.com/css?family=Roboto:100,200,300,400,500,700" rel="stylesheet">
+	<!--
+		CSS
+			============================================= -->
+			<link rel="stylesheet" href="{% static 'user/css/linearicons.css' %}">
+			<link rel="stylesheet" href="{% static 'user/css/font-awesome.min.css' %}">
+			<link rel="stylesheet" href="{% static 'user/css/bootstrap.css' %}">
+			<link rel="stylesheet" href="{% static 'user/css/magnific-popup.css' %}">
+			<link rel="stylesheet" href="{% static 'user/css/nice-select.css' %}">
+			<link rel="stylesheet" href="{% static 'user/css/animate.min.css' %}">
+			<link rel="stylesheet" href="{% static 'user/css/owl.carousel.css' %}">
+			<link rel="stylesheet" href="{% static 'user/css/jquery-ui.css' %}">
+			<link rel="stylesheet" href="{% static 'user/css/main.css' %}">
+
+
+	<style>
+		.border-3 {
+		  border-width: 3px !important;
+		}
+	  
+		.button-container {
+			display: flex;
+			justify-content: center;
+			margin-bottom: 1rem;
+		  }
+		  
+		  .button-container input[type="radio"] {
+			display: none;
+		  }
+		  
+		  .button-container label {
+			display: inline-flex;
+			align-items: center;
+			margin: 0 5px;
+			padding: 10px 20px;
+			border: 2px solid transparent;
+			border-radius: 50px; /* Rounded pill shape */
+			cursor: pointer;
+			transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+			background-color: #2ea1dc;  /* Button Color */
+			font-weight: bold;
+			color: white;
+			text-align: center;
+		  }
+		  
+		  .button-container label:hover {
+			background-color: #1a7bb9;
+		  }
+		  
+		  .button-container input[type="radio"]:checked + label {
+			background-color: white;
+			border-color: #2ea1dc;
+			color: #2ea1dc;
+		  }
+		  
+		  .button-container input[type="radio"]:checked + label::before {
+			content: "";
+			display: inline-block;
+			width: 14px;
+			height: 14px;
+			background-color: #2ea1dc;
+			border-radius: 50%;
+			margin-right: 8px;
+		  }
+		  
+	  
+
+
+
+		.form-column {
+		  display: flex;
+		  flex-direction: column;
+		  justify-content: center;
+		  align-items: center;
+		  height: 100%;
+		}
+
+	body {
+	  overflow-x: hidden;
+	}
+  </style>
+
+</head>
+
+<body>
+	<!-- start header Area -->
+	<header id="header">
+		<div class="header-top">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-6 col-sm-6 col-8 header-top-left no-padding">
+						<ul>
+							<a href="https://www.facebook.com/share/1CAG9BP7zo/"><i class="fa fa-facebook"></i></a>
+					<a href="https://x.com/vvitguntur?t=9sK85JwAIJ2XUiItCMmcxg&s=09"><i class="fa fa-twitter"></i></a>
+					<a href="https://www.vvitguntur.com/"><i class="fa fa-dribbble"></i></a>
+						</ul>
+					</div>
+					<div class="col-lg-6 col-sm-6 col-4 header-top-right no-padding">
+						<a href="tel:+880 1234 654 953">
+							<span class="text">+91 93811 60221</span>
+						</a>
+						<a class="book-now" href="{% url 'user_logout' %}">Logout</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container main-menu">
+			<div class="row align-items-center justify-content-between d-flex">
+				<div id="logo">
+					<a href="{% url 'user_dashboard' %}"><h2 style="color: #2ea1dc;">Yoga Posture Detection</h2></a>
+				</div>
+				<nav id="nav-menu-container">
+					<ul class="nav-menu">
+						<li><a href="{% url 'user_dashboard' %}">Dashboard</a></li>
+						<li><a href="{% url 'user_profile' %}">User Profile</a></li>
+						<li><a class="" href="{% url 'Classification' %}">Detection</a></li>
+						<li><a class="" href="{% url 'live_detection' %}">Live Detection</a></li>
+						<li><a class="" href="{% url 'chatbot' %}">Chatbot</a></li>
+
+						<li><a href="{% url 'user_feedback' %}">Feedback</a></li>
+						<li><a href="{% url 'yoga_search' %}">Search Here</a></li>
+
+					</ul>
+				</nav><!-- #nav-menu-container -->
+			</div>
+		</div>
+	</header>
+	<!-- end header Area -->
+
+	<!-- start banner Area -->
+	<section class="banner-area relative about-banner" id="home">
+		<img class="cta-img img-fluid" src="{% static 'user/img/cta-img.png' %}" alt="">
+		<div class="overlay overlay-bg"></div>
+		<div class="container">
+			<div class="row d-flex align-items-center justify-content-center">
+				<div class="about-content col-lg-12">
+					<h1>
+						Detection
+					</h1>
+					<p class="link-nav"><a href="{% url 'user_dashboard' %}">Dashboard </a>
+						<span class="lnr lnr-arrow-right"></span> <a href="{% url 'Classification' %}">
+							Detection</a></p>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End banner Area -->
+
+		<style>
+			.search-container {
+				position: relative;
+				max-width: 300px;
+				margin: 20px auto;
+			}
+			.search-icon {
+				position: absolute;
+				right: 10px;
+				top: 50%;
+				transform: translateY(-50%);
+			}
+			.card {
+				margin-bottom: 20px;
+			}
+			.card-img-top {
+				height: 200px;
+				object-fit: cover;
+			}
+		</style>
+
+		<div class="container">
+			<h1 class="text-center mt-4">Yoga Posture Detection</h1>
+			<div class="search-container">
+				<input type="text" id="searchInput" class="form-control" placeholder="Search yoga postures...">
+				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search search-icon" viewBox="0 0 16 16">
+					<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+				</svg>
+			</div>
+			<div id="yogaCards" class="row"></div>
+		</div>
+	
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+		<script>
+			const yogaPoses = [
+				{
+					title: "Mountain Pose (Tadasana)",
+					details: "A foundational standing pose that improves posture and balance.",
+					image: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8eW9nYSUyMHBvc2V8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
+					youtubeLink: "https://www.youtube.com/watch?v=2HTvZp5rPrg"
+				},
+				{
+					title: "Downward Facing Dog (Adho Mukha Svanasana)",
+					details: "An inversion pose that stretches and strengthens the entire body.",
+					image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8eW9nYSUyMHBvc2V8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
+					youtubeLink: "https://www.youtube.com/watch?v=j97SSGsnCAQ"
+				},
+				{
+					title: "Warrior I (Virabhadrasana I)",
+					details: "A standing pose that builds strength and improves focus.",
+					image: "https://images.unsplash.com/photo-1510894347713-fc3ed6fdf539?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8eW9nYSUyMHBvc2V8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
+					youtubeLink: "https://www.youtube.com/watch?v=k4qaVoAbeHM"
+				},
+				{
+					title: "Tree Pose (Vrksasana)",
+					details: "A balancing pose that improves focus and strengthens the legs and core.",
+					image: "https://images.unsplash.com/photo-1552286450-4a669f880062?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8eW9nYSUyMHBvc2V8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
+					youtubeLink: "https://www.youtube.com/watch?v=wdln9qWYloU"
+				},
+				{
+					title: "Child's Pose (Balasana)",
+					details: "A resting pose that gently stretches the back and hips.",
+					image: "https://images.unsplash.com/photo-1600881333168-2ef49b341f30?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8eW9nYSUyMHBvc2V8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
+					youtubeLink: "https://www.youtube.com/watch?v=2MJGg-dUKh0"
+				},
+				{
+					title: "Cobra Pose (Bhujangasana)",
+					details: "A backbend that strengthens the spine and opens the chest.",
+					image: "https://images.unsplash.com/photo-1599447421416-3414985c3521?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fHlvZ2ElMjBwb3NlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+					youtubeLink: "https://www.youtube.com/watch?v=fOdrW7nf9gw"
+				},
+				{
+					title: "Corpse Pose (Savasana)",
+					details: "A relaxation pose that calms the mind and body.",
+					image: "https://images.unsplash.com/photo-1601925260368-ae2f83cf8b7f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fHlvZ2ElMjBwb3NlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+					youtubeLink: "https://www.youtube.com/watch?v=1VYlOKUdylM"
+				},
+				{
+					title: "Warrior II (Virabhadrasana II)",
+					details: "A standing pose that strengthens the legs and improves balance.",
+					image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTR8fHlvZ2ElMjBwb3NlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+					youtubeLink: "https://www.youtube.com/watch?v=4Ejz7IgODlU"
+				},
+				{
+					title: "Triangle Pose (Trikonasana)",
+					details: "A standing pose that stretches the legs and spine.",
+					image: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTZ8fHlvZ2ElMjBwb3NlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+					youtubeLink: "https://www.youtube.com/watch?v=upFYlxZHif0"
+				},
+				{
+					title: "Bridge Pose (Setu Bandha Sarvangasana)",
+					details: "A backbend that strengthens the back and opens the chest.",
+					image: "https://images.unsplash.com/photo-1599447421416-3414985c3521?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fHlvZ2ElMjBwb3NlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+					youtubeLink: "https://www.youtube.com/watch?v=NnbvPeAIhmA"
+				},
+				{
+					title: "Seated Forward Bend (Paschimottanasana)",
+					details: "A seated pose that stretches the hamstrings and back.",
+					image: "https://images.unsplash.com/photo-1552286450-4a669f880062?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjB8fHlvZ2ElMjBwb3NlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+					youtubeLink: "https://www.youtube.com/watch?v=T8sgVyF4Ux0"
+				},
+				{
+					title: "Half Moon Pose (Ardha Chandrasana)",
+					details: "A balancing pose that improves coordination and strengthens the legs.",
+					image: "https://images.unsplash.com/photo-1510894347713-fc3ed6fdf539?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjJ8fHlvZ2ElMjBwb3NlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+					youtubeLink: "https://www.youtube.com/watch?v=fAYLASzV3RE"
+				},
+				{
+					title: "Plank Pose",
+					details: "A core-strengthening pose that improves overall body stability.",
+					image: "https://images.unsplash.com/photo-1600881333168-2ef49b341f30?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjR8fHlvZ2ElMjBwb3NlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+					youtubeLink: "https://www.youtube.com/watch?v=pvIjsG5Svck"
+				},
+				{
+					title: "Chair Pose (Utkatasana)",
+					details: "A standing pose that strengthens the legs and core.",
+					image: "https://images.unsplash.com/photo-1601925260368-ae2f83cf8b7f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjZ8fHlvZ2ElMjBwb3NlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+					youtubeLink: "https://www.youtube.com/watch?v=a8hxNH6-Ss8"
+				},
+				{
+					title: "Cat-Cow Pose (Marjaryasana-Bitilasana)",
+					details: "A gentle flow that warms up the spine and improves flexibility.",
+					image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mjh8fHlvZ2ElMjBwb3NlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+					youtubeLink: "https://www.youtube.com/watch?v=kqnua4rHVVA"
+				}
+				
+			];
+				
+			function createYogaCard(pose) {
+				return `
+					<div class="col-md-4">
+						<div class="card">
+							<img src="${pose.image}" class="card-img-top" alt="${pose.title}">
+							<div class="card-body">
+								<h5 class="card-title">${pose.title}</h5>
+								<p class="card-text">${pose.details}</p>
+								<a href="${pose.youtubeLink}" class="btn btn-primary" target="_blank">Watch Tutorial</a>
+							</div>
+						</div>
+					</div>
+				`;
+			}
+	
+			function displayYogaPoses(poses) {
+				const yogaCardsContainer = document.getElementById('yogaCards');
+				yogaCardsContainer.innerHTML = poses.map(createYogaCard).join('');
+			}
+	
+			function searchYogaPoses() {
+				const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+				const filteredPoses = yogaPoses.filter(pose => 
+					pose.title.toLowerCase().includes(searchTerm) || 
+					pose.details.toLowerCase().includes(searchTerm)
+				);
+				displayYogaPoses(filteredPoses);
+			}
+	
+			document.getElementById('searchInput').addEventListener('input', searchYogaPoses);
+	
+			displayYogaPoses(yogaPoses);
+		</script>
+
+	
+
+	
+
+
+  <!-- End -->
+
+<!-- Start Scripts -->
+
+<!-- Image Preview Dispaly and File Name Display  Script -->
+ 
+
+<!-- End Of the Scripts -->
+
+
+<br>
+<br>
+<br>
+
+	<!-- start footer Area -->
+	<footer class="footer-area section-gap">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-3  col-md-6 col-sm-6">
+					<div class="single-footer-widget">
+						<h4>Fact</h4>
+						<p>
+							Did you know yoga is over 5,000 years old? Originating in ancient India, it has evolved and adapted across centuries to become the diverse and globally practiced discipline it is today.
+						</p>
+					</div>
+				</div>
+				<div class="col-lg-4  col-md-6 col-sm-6">
+					<div class="single-footer-widget">
+						<h4>Contact Us</h4>
+						<p>
+							Nambur , Guntur - 522508
+						</p>
+						<p class="number">
+							+91 93811 60221 <br> 
+						</p>
+					</div>
+				</div>
+				<div class="col-lg-5  col-md-6 col-sm-6">
+					<div class="single-footer-widget">
+						<h4>Newsletter</h4>
+						<p>You can trust us. we only send offers, not a single spam.</p>
+						<div class="d-flex flex-row" id="mc_embed_signup">
+
+						<form class="navbar-form"
+							 method="get">
+								<div class="input-group add-on align-items-center d-flex">
+									<input class="form-control" name="email" placeholder="Your Email" placeholder = 'Your Email address'
+									 required type="email">
+									<div style="position: absolute; left: -5000px;">
+										<input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value="" type="text">
+									</div>
+									<div class="input-group-btn">
+										<button class="genric-btn"><span class="lnr lnr-arrow-right"></span></button>
+									</div>
+								</div>
+								<div class="info mt-20"></div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="footer-bottom row align-items-center">
+				<p class="footer-text m-0 col-lg-6 col-md-12"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Developed With <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://www.vvitguntur.com/" target="_blank">VVIT Students</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+				<div class="col-lg-6 col-sm-12 footer-social">
+					<a href="https://www.facebook.com/share/1CAG9BP7zo/"><i class="fa fa-facebook"></i></a>
+					<a href="https://x.com/vvitguntur?t=9sK85JwAIJ2XUiItCMmcxg&s=09"><i class="fa fa-twitter"></i></a>
+					<a href="https://www.vvitguntur.com/"><i class="fa fa-dribbble"></i></a>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- End footer Area -->
+
+	<script src="{% static 'user/js/vendor/jquery-2.2.4.min.js' %}"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+	 crossorigin="anonymous"></script>
+	<script src="{% static 'user/js/vendor/bootstrap.min.js' %}"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
+	<script src="{% static 'user/js/easing.min.js' %}"></script>
+	<script src="{% static 'user/js/hoverIntent.js' %}"></script>
+	<script src="{% static 'user/js/superfish.min.js' %}"></script>
+	<script src="{% static 'user/js/jquery.ajaxchimp.min.js' %}"></script>
+	<script src="{% static 'user/js/jquery.magnific-popup.min.js' %}"></script>
+	<script src="{% static 'user/js/jquery.tabs.min.js' %}"></script>
+	<script src="{% static 'user/js/jquery.nice-select.min.js' %}"></script>
+	<script src="{% static 'user/js/owl.carousel.min.js' %}"></script>
+	<script src="{% static 'user/js/mail-script.js' %}"></script>
+	<script src="{% static 'user/js/main.js' %}"></script>
+
+
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    {% if messages %}
+            {% for message in messages %}
+                {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                    <script>swal({
+                            title: "Success!",
+                            text: "{{message}}",
+                            icon: "success",
+                            button: "OK",
+                        });
+                    </script>
+                
+                {% elif message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+                    <script>swal({
+                            title: "Warning :)",
+                            text: "{{message}}",
+                            icon: "warning",
+                            button: "OK",
+                        
+                        });
+                    </script>
+                {% elif message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
+                    <script>swal({
+                            title: "info :)",
+                            text: "{{message}}",
+                            icon: "info",
+                            button: "OK",
+                        });
+                    </script>
+                {% elif message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                    <script>swal({
+                            title: "error :)",
+                            text: "{{message}}",
+                            icon: "error",
+                            button: "OK",
+                        });
+                    </script>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+
+
+</body>
+
+</html>

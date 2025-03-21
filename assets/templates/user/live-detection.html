@@ -1,0 +1,542 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zxx" class="no-js">
+
+<head>
+	<!-- Mobile Specific Meta -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Favicon-->
+	<link rel="shortcut icon" href="{% static 'user/img/icon-img.png' %}">
+	<!-- Author Meta -->
+	<meta name="author" content="colorlib">
+	<!-- Meta Description -->
+	<meta name="description" content="">
+	<!-- Meta Keyword -->
+	<meta name="keywords" content="">
+	<!-- meta character set -->
+	<meta charset="UTF-8">
+	<!-- Site Title -->
+	<title>Detection</title>
+
+	<link href="https://fonts.googleapis.com/css?family=Roboto:100,200,300,400,500,700" rel="stylesheet">
+	<!--
+		CSS
+			============================================= -->
+			<link rel="stylesheet" href="{% static 'user/css/linearicons.css' %}">
+			<link rel="stylesheet" href="{% static 'user/css/font-awesome.min.css' %}">
+			<link rel="stylesheet" href="{% static 'user/css/bootstrap.css' %}">
+			<link rel="stylesheet" href="{% static 'user/css/magnific-popup.css' %}">
+			<link rel="stylesheet" href="{% static 'user/css/nice-select.css' %}">
+			<link rel="stylesheet" href="{% static 'user/css/animate.min.css' %}">
+			<link rel="stylesheet" href="{% static 'user/css/owl.carousel.css' %}">
+			<link rel="stylesheet" href="{% static 'user/css/jquery-ui.css' %}">
+			<link rel="stylesheet" href="{% static 'user/css/main.css' %}">
+
+
+	<style>
+		.border-3 {
+		  border-width: 3px !important;
+		}
+	  
+		.button-container {
+			display: flex;
+			justify-content: center;
+			margin-bottom: 1rem;
+		  }
+		  
+		  .button-container input[type="radio"] {
+			display: none;
+		  }
+		  
+		  .button-container label {
+			display: inline-flex;
+			align-items: center;
+			margin: 0 5px;
+			padding: 10px 20px;
+			border: 2px solid transparent;
+			border-radius: 50px; /* Rounded pill shape */
+			cursor: pointer;
+			transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+			background-color: #2ea1dc;  /* Button Color */
+			font-weight: bold;
+			color: white;
+			text-align: center;
+		  }
+		  
+		  .button-container label:hover {
+			background-color: #1a7bb9;
+		  }
+		  
+		  .button-container input[type="radio"]:checked + label {
+			background-color: white;
+			border-color: #2ea1dc;
+			color: #2ea1dc;
+		  }
+		  
+		  .button-container input[type="radio"]:checked + label::before {
+			content: "";
+			display: inline-block;
+			width: 14px;
+			height: 14px;
+			background-color: #2ea1dc;
+			border-radius: 50%;
+			margin-right: 8px;
+		  }
+		  
+	  
+
+
+
+
+		.form-column {
+		  display: flex;
+		  flex-direction: column;
+		  justify-content: center;
+		  align-items: center;
+		  height: 100%;
+		}
+
+	body {
+	  overflow-x: hidden;
+	}
+  </style>
+
+</head>
+
+<body>
+	<!-- start header Area -->
+	<header id="header">
+		<div class="header-top">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-6 col-sm-6 col-8 header-top-left no-padding">
+						<ul>
+							<a href="https://www.facebook.com/share/1CAG9BP7zo/"><i class="fa fa-facebook"></i></a>
+					<a href="https://x.com/vvitguntur?t=9sK85JwAIJ2XUiItCMmcxg&s=09"><i class="fa fa-twitter"></i></a>
+					<a href="https://www.vvitguntur.com/"><i class="fa fa-dribbble"></i></a>
+						</ul>
+					</div>
+					<div class="col-lg-6 col-sm-6 col-4 header-top-right no-padding">
+						<a href="tel:+880 1234 654 953">
+							<span class="text">+91 93811 60221</span>
+						</a>
+						<a class="book-now" href="{% url 'user_logout' %}">Logout</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container main-menu">
+			<div class="row align-items-center justify-content-between d-flex">
+				<div id="logo">
+					<a href="{% url 'user_dashboard' %}"><h2 style="color: #2ea1dc;">Yoga Posture Detection</h2></a>
+				</div>
+				<nav id="nav-menu-container">
+					<ul class="nav-menu">
+						<li><a href="{% url 'user_dashboard' %}">Dashboard</a></li>
+						<li><a href="{% url 'user_profile' %}">User Profile</a></li>
+						<li><a class="" href="{% url 'Classification' %}">Detection</a></li>
+						<li><a class="" href="{% url 'live_detection' %}">Live Detection</a></li>
+						<li><a class="" href="{% url 'chatbot' %}">Chatbot</a></li>
+						<li><a href="{% url 'user_feedback' %}">Feedback</a></li>
+						<li><a href="{% url 'yoga_search' %}">Search Here</a></li>
+
+					</ul>
+				</nav><!-- #nav-menu-container -->
+			</div>
+		</div>
+	</header>
+	<!-- end header Area -->
+
+	<!-- start banner Area -->
+	<section class="banner-area relative about-banner" id="home">
+		<img class="cta-img img-fluid" src="{% static 'user/img/cta-img.png' %}" alt="">
+		<div class="overlay overlay-bg"></div>
+		<div class="container">
+			<div class="row d-flex align-items-center justify-content-center">
+				<div class="about-content col-lg-12">
+					<h1>
+						Detection
+					</h1>
+					<p class="link-nav"><a href="{% url 'user_dashboard' %}">Dashboard </a>
+						<span class="lnr lnr-arrow-right"></span> <a href="{% url 'Classification' %}">
+							Detection</a></p>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End banner Area -->
+
+
+
+	
+
+
+
+	
+	
+{% comment %} 
+<div class="container">
+    <h2>Live Yoga Pose Detection</h2>
+    <div style="position: relative; width: 640px; height: 480px;">
+        <video id="webcam" autoplay muted playsinline style="position: absolute; left: 0; top: 0;"></video>
+        <canvas id="canvas" style="position: absolute; left: 0; top: 0;"></canvas>
+    </div>
+    <div id="prediction" style="font-size: 24px; color: #00ff00; margin-top: 20px;"></div>
+</div>
+ <!-- Start -->
+ <div class="container-xxl py-5 px-0 wow fadeInUp" data-wow-delay="0.1s">
+	<div class="row g-0 justify-content-center align-items-center">
+		<!-- Image Column -->
+		<div class="col-md-5 d-flex justify-content-center align-items-center">
+		  <div class="video">
+			<img id="preview-image" src="{% static 'user/img/yoga-5.jpeg' %}" class="img-fluid" alt="Image" style="max-width: 500px;">
+			<div id="file-name" class="text-dark mt-2" style="color: black; text-align: center; font-weight:bold;"></div>
+		</div>
+		</div>
+<script>
+    const video = document.getElementById('webcam');
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    const predictionDiv = document.getElementById('prediction');
+
+    // Set canvas size
+    canvas.width = 640;
+    canvas.height = 480;
+
+    // Access webcam
+    navigator.mediaDevices.getUserMedia({ video: { width: 640, height: 480 } })
+        .then(stream => {
+            video.srcObject = stream;
+            video.onloadedmetadata = () => video.play();
+            processFrame();
+        })
+        .catch(console.error);
+
+    async function processFrame() {
+        // Draw video frame to canvas
+        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+        
+        // Get image data
+        const imageData = canvas.toDataURL('image/jpeg', 0.8);
+        
+        try {
+            // Send to server for prediction
+            const response = await fetch('/predict_frame/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'X-CSRFToken': '{{ csrf_token }}',
+                },
+                body: `image=${encodeURIComponent(imageData)}`
+            });
+            
+            const data = await response.json();
+            
+            if (!data.error) {
+                // Draw green line and prediction text
+                ctx.beginPath();
+                ctx.moveTo(20, canvas.height - 40);
+                ctx.lineTo(300, canvas.height - 40);
+                ctx.strokeStyle = '#00FF00';
+                ctx.lineWidth = 3;
+                ctx.stroke();
+                
+                ctx.fillStyle = '#00FF00';
+                ctx.font = '24px Arial';
+                ctx.fillText(`${data.prediction} (${(data.confidence * 100).toFixed(1)}%)`, 20, canvas.height - 20);
+                
+                predictionDiv.textContent = `${data.prediction} (${(data.confidence * 100).toFixed(1)}%)`;
+            }
+        } catch (error) {
+            console.error('Prediction error:', error);
+        }
+
+        // Continue processing frames
+        requestAnimationFrame(processFrame);
+    }
+</script> {% endcomment %}
+
+<br><br><br>
+<div class="container">
+    <h2 class="title">Live Yoga Pose Detection</h2><hr>
+    <div class="video-container">
+        <video id="webcam" autoplay muted playsinline></video>
+        <canvas id="canvas"></canvas>
+    </div>
+    <div id="prediction" class="prediction-text"></div>
+</div>
+
+<!-- Image Column -->
+<div class="container-xxl py-5 px-0 wow fadeInUp" data-wow-delay="0.1s">
+    <div class="row g-0 justify-content-center align-items-center">
+        <div class="col-md-5 d-flex justify-content-center align-items-center">
+            <div class="video">
+                <img id="preview-image" src="{% static 'user/img/yoga-5.jpeg' %}" class="img-fluid" alt="Image" style="max-width: 500px;">
+                <div id="file-name" class="text-dark mt-2" style="color: black; text-align: center; font-weight:bold;"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Get elements
+const video = document.getElementById('webcam');
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+const predictionDiv = document.getElementById('prediction');
+
+// Set canvas size
+canvas.width = 640;
+canvas.height = 480;
+
+// Access webcam
+navigator.mediaDevices.getUserMedia({ video: { width: 640, height: 480 } })
+    .then(stream => {
+        video.srcObject = stream;
+        video.onloadedmetadata = () => video.play();
+        processFrame();
+    })
+    .catch(error => console.error('Webcam access error:', error));
+
+async function processFrame() {
+    try {
+        // Draw video frame to canvas
+        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+        // Get image data
+        const imageData = canvas.toDataURL('image/jpeg', 0.8);
+
+        // Send to server for prediction
+        const response = await fetch('/predict_frame/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'X-CSRFToken': '{{ csrf_token }}',
+            },
+            body: `image=${encodeURIComponent(imageData)}`
+        });
+
+        const data = await response.json();
+
+        if (!data.error) {
+            // Clear previous drawings
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+            // Draw green line and prediction text
+            ctx.beginPath();
+            ctx.moveTo(20, canvas.height - 40);
+            ctx.lineTo(300, canvas.height - 40);
+            ctx.strokeStyle = '#00FF00';
+            ctx.lineWidth = 3;
+            ctx.stroke();
+
+            ctx.fillStyle = '#00FF00';
+            ctx.font = '24px Arial';
+            ctx.fillText(`${data.prediction} (${(data.confidence * 100).toFixed(1)}%)`, 20, canvas.height - 20);
+
+            // Update prediction text
+            predictionDiv.textContent = `${data.prediction} (${(data.confidence * 100).toFixed(1)}%)`;
+        }
+    } catch (error) {
+        console.error('Prediction error:', error);
+    }
+
+    // Continue processing frames
+    requestAnimationFrame(processFrame);
+}
+
+</script>
+<style>
+
+
+	
+	.title {
+		text-align: center;
+		margin-bottom: 20px;
+	}
+	
+	.video-container {
+		position: relative;
+		width: 640px;
+		height: 480px;
+		margin: 0 auto;
+		border: 1px solid #ddd;
+		border-radius: 10px;
+		overflow: hidden;
+	}
+	
+	#webcam, #canvas {
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+	
+	.prediction-text {
+		font-size: 24px;
+		color: #00ff00;
+		margin-top: 20px;
+		text-align: center;
+		animation: fadeIn 1s;
+	}
+	
+	@keyframes fadeIn {
+		from { opacity: 0; }
+		to { opacity: 1; }
+	}
+	
+	/* Centering the video container */
+	.video-container {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	
+	/* For image column */
+	.video {
+		text-align: center;
+	}
+	
+</style>
+		
+
+
+
+
+
+
+
+
+<!-- End Of the Scripts -->
+
+
+<br>
+<br>
+<br>
+
+	<!-- start footer Area -->
+	<footer class="footer-area section-gap">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-3  col-md-6 col-sm-6">
+					<div class="single-footer-widget">
+						<h4>Fact</h4>
+						<p>
+							Did you know yoga is over 5,000 years old? Originating in ancient India, it has evolved and adapted across centuries to become the diverse and globally practiced discipline it is today.
+						</p>
+					</div>
+				</div>
+				<div class="col-lg-4  col-md-6 col-sm-6">
+					<div class="single-footer-widget">
+						<h4>Contact Us</h4>
+						<p>
+							Nambur , Guntur - 522508
+						</p>
+						<p class="number">
+							+91 93811 60221 <br> 
+						</p>
+					</div>
+				</div>
+				<div class="col-lg-5  col-md-6 col-sm-6">
+					<div class="single-footer-widget">
+						<h4>Newsletter</h4>
+						<p>You can trust us. we only send offers, not a single spam.</p>
+						<div class="d-flex flex-row" id="mc_embed_signup">
+
+						<form class="navbar-form"
+							 method="get">
+								<div class="input-group add-on align-items-center d-flex">
+									<input class="form-control" name="email" placeholder="Your Email" placeholder = 'Your Email address'
+									 required type="email">
+									<div style="position: absolute; left: -5000px;">
+										<input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value="" type="text">
+									</div>
+									<div class="input-group-btn">
+										<button class="genric-btn"><span class="lnr lnr-arrow-right"></span></button>
+									</div>
+								</div>
+								<div class="info mt-20"></div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="footer-bottom row align-items-center">
+				<p class="footer-text m-0 col-lg-6 col-md-12"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Developed With <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://www.vvitguntur.com/" target="_blank">VVIT Students</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+				<div class="col-lg-6 col-sm-12 footer-social">
+					<a href="https://www.facebook.com/share/1CAG9BP7zo/"><i class="fa fa-facebook"></i></a>
+					<a href="https://x.com/vvitguntur?t=9sK85JwAIJ2XUiItCMmcxg&s=09"><i class="fa fa-twitter"></i></a>
+					<a href="https://www.vvitguntur.com/"><i class="fa fa-dribbble"></i></a>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- End footer Area -->
+
+	<script src="{% static 'user/js/vendor/jquery-2.2.4.min.js' %}"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+	 crossorigin="anonymous"></script>
+	<script src="{% static 'user/js/vendor/bootstrap.min.js' %}"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
+	<script src="{% static 'user/js/easing.min.js' %}"></script>
+	<script src="{% static 'user/js/hoverIntent.js' %}"></script>
+	<script src="{% static 'user/js/superfish.min.js' %}"></script>
+	<script src="{% static 'user/js/jquery.ajaxchimp.min.js' %}"></script>
+	<script src="{% static 'user/js/jquery.magnific-popup.min.js' %}"></script>
+	<script src="{% static 'user/js/jquery.tabs.min.js' %}"></script>
+	<script src="{% static 'user/js/jquery.nice-select.min.js' %}"></script>
+	<script src="{% static 'user/js/owl.carousel.min.js' %}"></script>
+	<script src="{% static 'user/js/mail-script.js' %}"></script>
+	<script src="{% static 'user/js/main.js' %}"></script>
+
+
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    {% if messages %}
+            {% for message in messages %}
+                {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                    <script>swal({
+                            title: "Success!",
+                            text: "{{message}}",
+                            icon: "success",
+                            button: "OK",
+                        });
+                    </script>
+                
+                {% elif message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+                    <script>swal({
+                            title: "Warning :)",
+                            text: "{{message}}",
+                            icon: "warning",
+                            button: "OK",
+                        
+                        });
+                    </script>
+                {% elif message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
+                    <script>swal({
+                            title: "info :)",
+                            text: "{{message}}",
+                            icon: "info",
+                            button: "OK",
+                        });
+                    </script>
+                {% elif message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                    <script>swal({
+                            title: "error :)",
+                            text: "{{message}}",
+                            icon: "error",
+                            button: "OK",
+                        });
+                    </script>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+
+
+</body>
+
+</html>
